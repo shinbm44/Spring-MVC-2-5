@@ -24,14 +24,14 @@ public class LoginCheckFilter implements Filter {
 
 
         try{
-            log.info("인증 체크 필터 시작={}", requestURI);
+            log.info("인증 체크 필터 시작{}", requestURI);
 
             if ( isLoginCheckPath(requestURI)) {
-                log.info("인증 체크 로직 실행={}", requestURI);
+                log.info("인증 체크 로직 실행{}", requestURI);
                 HttpSession session = httpRequest.getSession(false);
                 if(session == null || session.getAttribute(SessionConst.LOGIN_MEMBER)==null) {
 
-                    log.info("미인증 사용자 요청={}", requestURI);
+                    log.info("미인증 사용자 요청{}", requestURI);
                     // 로그인으로 redirect
                     httpResponse.sendRedirect("/login?redirectURL="+ requestURI);
                     return;
@@ -43,7 +43,7 @@ public class LoginCheckFilter implements Filter {
         } catch (Exception e) {
             throw e; // 예외 로깅 가능 하지만, 톰케사지 예외를 보내주어야 한다.
         } finally {
-            log.info("인증 체크 필터 종료={}", requestURI);
+            log.info("인증 체크 필터 종료{}", requestURI);
         }
 
 
